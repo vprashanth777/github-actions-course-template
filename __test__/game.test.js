@@ -62,7 +62,9 @@ describe('Game', () => {
       game.nextPlayer()
       expect(game.player).toBe('Nate')
     })
-  })*/
+  })
+  
+  */
 
   describe('hasWinner', () => {
     it('Wins if any row is filled', async () => {
