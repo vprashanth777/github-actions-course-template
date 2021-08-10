@@ -19,4 +19,5 @@ workflows:
   sampleApp:
     jobs:
       - build
-      - test
+      - run:test
+     
