@@ -19,3 +19,4 @@ workflows:
   sampleApp:
     jobs:
       - build
+      - test
