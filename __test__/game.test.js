@@ -63,6 +63,5 @@ describe('Game', () => {
       expect(game.player).toBe('Nate')
     })
   })
-
-
+  
 })
