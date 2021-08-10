@@ -64,45 +64,5 @@ describe('Game', () => {
     })
   })
 
-  describe('hasWinner', () => {
-    it('Wins if any row is filled', async () => {
-      for (let r = 0; r < game.board.length; r++) {
-        for (let c = 0; c < game.board[r].length; c++) {
-          game.board[r][c] = 'X'
-        }
-        expect(game.hasWinner()).toBe(true)
 
-        for (let c = 0; c < game.board[r].length; c++) {
-          game.board[r][c] = null
-        }
-      }
-    })
-
-    it('Wins if any column is filled', async () => {
-      for (let r = 0; r < game.board.length; r++) {
-        for (let c = 0; c < game.board[r].length; c++) {
-          game.board[c][r] = 'X'
-        }
-        expect(game.hasWinner()).toBe(true)
-
-        for (let c = 0; c < game.board[r].length; c++) {
-          game.board[c][r] = null
-        }
-      }
-    })
-
-    it('Wins if down-left diagonal is filled', async () => {
-      for (let r = 0; r < game.board.length; r++) {
-        game.board[r][r] = 'X'
-      }
-      expect(game.hasWinner()).toBe(true)
-    })
-
-    it('Wins if up-right diagonal is filled', async () => {
-      for (let r = 0; r < game.board.length; r++) {
-        game.board[2 - r][r] = 'X'
-      }
-      expect(game.hasWinner()).toBe(true)
-    })
-  })
 })
