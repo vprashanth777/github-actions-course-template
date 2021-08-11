@@ -11,13 +11,16 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: 'NPM install'
-        run :
-          npm install
-          npm run bulid
-          
+      - name: NPM install
+        run: npm install npm run bulid
+      - uses: actions/upload-artifact@master
+        with:
+          name: webpack
+          path: public/
   test:
     runs-on: windows-latest
+    needs: build
+          
     strategy:
       matrix:
         node-version:
@@ -30,11 +33,15 @@ jobs:
           - windows-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/downalod-artifact@master
+        with:
+          name: webpack
+          path: public
       - name: 'Use Node.js ${{ matrix.node-version }}'
         uses: actions/setup-node@v2
         with:
           node-version: '${{ matrix.node-version }}'
-          cache: npm
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+      - name: NPM install and test
+        run: npm install npm run bulid
+        env: 
+          CI: true
