@@ -20,10 +20,7 @@ jobs:
   test:
     runs-on: windows-latest
     needs: build
-    '-uses': actions/download-artifact@master
-    with:
-      name: webpack
-      path: public
+          
     strategy:
       matrix:
         node-version:
@@ -36,6 +33,10 @@ jobs:
           - windows-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/downalod-artifact@master
+        with:
+          name: webpack
+          path: public
       - name: 'Use Node.js ${{ matrix.node-version }}'
         uses: actions/setup-node@v2
         with:
